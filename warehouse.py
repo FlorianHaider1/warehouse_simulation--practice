@@ -9,7 +9,7 @@
 from prettytable import PrettyTable
 
 inventory = {"tools":{}, "cutlery":{}, "towels":{}, "kitchenware":{},}
-items = ["cutlery", "knife", "tools", "hammer","kitchenware", "toaster", "towels", "cotton towel","towels", "satin towel", "tools", "screwdriver", "cutlery", "fork", "cutlery", "spoon", "cutlery", "teaspoon"]
+items = ["cutlery", "knife", "tools", "hammer", "kitchenware", "toaster", "towels", "cotton towel","towels", "satin towel", "tools", "screwdriver", "cutlery", "fork", "cutlery", "spoon", "cutlery", "teaspoon"]
 quantities = [2, 4, 1, 5, 2, 8, 5, 3, 2]
 
 def type_item_quantity():
@@ -20,28 +20,13 @@ def entries_dictionary(overview):
         inventory[category][item] = quantity
     return inventory
 
-table_inventory = PrettyTable(entries_dictionary(type_item_quantity()))
+raw_inventory = entries_dictionary(type_item_quantity())
 
-print(table_inventory)
+def nice_inventory(invent):
+    table = PrettyTable(["Category","Item","Quantity"])
+    for category in invent:
+            for item, quantity in invent[category].items():
+                 table.add_row([category, item, quantity])
+    return table
 
-# def import_to_inventory():
-#     for items in type_item_quantity():
-#         if inventory[keys] == keys:
-#             inventory.values == values
-#         print(inventory)
-
-# import_to_inventory()
-
-
-# import_to_inventory()
-# print(inventory)
-# for i, d in type_item_quantity():
-#     if inventory[] == i:
-#         inventory[i] = d
-
-
-# def create_entries():
-#     inventory = dict(zip(type_item_quantity[0::2] type_item_quantity()))
-#     print(inventory)
-
-# create_entries()
+print(nice_inventory(raw_inventory))
